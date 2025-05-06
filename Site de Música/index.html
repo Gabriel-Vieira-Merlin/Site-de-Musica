@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- Define o tipo de documento como HTML5 -->
+<html lang="pt-BR">
+<!-- Define o idioma da página como Português do Brasil -->
+<head>
+    <!-- Meta tags para configuração básica da página -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Configura viewport para responsividade -->
+    <title>Música Pro</title> <!-- Título da página exibido na aba do navegador -->
+    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo CSS -->
+</head>
+
+<body>
+    <!-- Cabeçalho da página -->
+    <header>
+        <div class="container">
+            <h1 class="logo">Música Pro</h1> <!-- Logo/Nome do site -->
+            <!-- Menu de navegação principal -->
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li> <!-- Link para a página inicial -->
+                    <li><a href="#artistas">Artistas</a></li> <!-- Link âncora para seção de artistas -->
+                    <li><a href="#albuns">Álbuns</a></li> <!-- Link âncora para seção de álbuns -->
+                    <li><a href="cadastro.html">Cadastro</a></li> <!-- Link para página de cadastro -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Conteúdo principal da página -->
+    <main class="container">
+        <!-- Seção hero (destaque) -->
+        <section class="hero">
+            <h2>Descubra música de qualidade</h2> <!-- Título principal -->
+            <p>Uma experiência auditiva limpa e minimalista.</p> <!-- Subtítulo -->
+        </section>
+
+        <!-- Seção de artistas -->
+        <section id="artistas" class="section">
+            <h2>Artista em Destaque</h2> <!-- Título da seção -->
+            <!-- Card do artista -->
+            <div class="card">
+                <img src="https://radiozora.fm/wp-content/uploads/2016/03/11257180_10154548788602908_5927191757779623174_o.jpg" alt="AJJA">
+                <div class="card-content">
+                    <h3>AJJA</h3> <!-- Nome do artista -->
+                    <p>Psytrance progressivo com batidas energéticas.</p> <!-- Descrição -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de álbuns -->
+        <section id="albuns" class="section">
+            <h2>Álbuns</h2> <!-- Título da seção -->
+            <div class="card">
+                <h3>Tulpa</h3> <!-- Nome do álbum -->
+                <div class="track-list">
+                    <!-- Lista de faixas com links externos -->
+                    <a href="https://ajjaleu.com/album/tulpa/" target="_blank">Bebopper (07:37)</a>
+                    <a href="https://ajjaleu.com/album/tulpa/" target="_blank">Rude Alert (06:57)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção do player de música -->
+        <section class="player">
+            <h2>Player</h2> <!-- Título do player -->
+            <!-- Lista de músicas disponíveis -->
+            <div class="playlist" id="playlist">
+                <div class="track active" data-src="https://soundcloud.com/search?q=psytrance">Psytrance Sample 1</div>
+                <div class="track" data-src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">Psytrance Sample 2</div>
+            </div>
+            <!-- Elemento de áudio nativo do HTML5 -->
+            <audio id="audioPlayer" controls></audio>
+            <!-- Controles do player -->
+            <div class="player-controls">
+                <button id="prevBtn">Anterior</button> <!-- Botão de música anterior -->
+                <button id="playPauseBtn">Play</button> <!-- Botão de play/pause -->
+                <button id="nextBtn">Próxima</button> <!-- Botão de próxima música -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé da página -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Música Pro</p> <!-- Copyright -->
+        </div>
+    </footer>
+
+    <!-- Link para o arquivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

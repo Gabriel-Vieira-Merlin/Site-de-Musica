@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- Define o tipo de documento como HTML5 -->
+<html lang="pt-BR">
+<!-- Define o idioma da página como Português do Brasil -->
+<head>
+    <!-- Meta tags para configuração básica da página -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Configura viewport para responsividade -->
+    <title>Cadastro | Música Pro</title> <!-- Título da página exibido na aba do navegador -->
+    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo CSS -->
+</head>
+
+<body>
+    <!-- Cabeçalho da página (igual ao index.html) -->
+    <header>
+        <div class="container">
+            <h1 class="logo">Música Pro</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#artistas">Artistas</a></li>
+                    <li><a href="index.html#albuns">Álbuns</a></li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal da página de cadastro -->
+    <main class="container">
+        <!-- Seção do formulário de cadastro -->
+        <section class="form-section">
+            <h2>Cadastrar Música</h2> <!-- Título da seção -->
+            <!-- Formulário para cadastrar novas músicas -->
+            <form id="formCadastro">
+                <!-- Grupo do campo título -->
+                <div class="form-group">
+                    <label for="titulo">Título</label> <!-- Label do campo -->
+                    <input type="text" id="titulo" required> <!-- Campo de input -->
+                </div>
+                <!-- Grupo do campo artista -->
+                <div class="form-group">
+                    <label for="artista">Artista</label>
+                    <input type="text" id="artista" required>
+                </div>
+                <!-- Grupo do campo gênero -->
+                <div class="form-group">
+                    <label for="genero">Gênero</label>
+                    <input type="text" id="genero" required>
+                </div>
+                <!-- Botão de submit -->
+                <button type="submit">Salvar</button>
+            </form>
+        </section>
+
+        <!-- Seção que exibe a lista de músicas cadastradas -->
+        <section class="list-section">
+            <h2>Músicas Cadastradas</h2> <!-- Título da seção -->
+            <!-- Container onde as músicas serão listadas -->
+            <div id="musicasLista" class="music-list"></div>
+        </section>
+    </main>
+
+    <!-- Link para o arquivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
