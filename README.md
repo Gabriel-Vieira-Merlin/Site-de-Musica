@@ -53,7 +53,7 @@ Visual Studio Code
 │   │
 │   └── /js/
 │       └── script.js
-│
+├── index.php
 ├── index.php
 └── README.md
 
