@@ -1,17 +1,30 @@
-# Site-de-Musica
-Site de música para catalogar músicas ouvidas pelo usuário
+Site para catalogar e avaliar álbuns ouvidos pelo usuário.
+
+--INTEGRANTES
 
 Gabriel Merlin - 3014082
 Daniel Monteiro - 3009590
 Filipe Cruz - 3003566
 Orlando Neto - 2987933
 
-ALBUMZ é um site para cadastrar e exibir álbuns musicais. Este projeto permite que os usuários adicionem informações sobre álbuns, incluindo título, artista, gênero e imagem da capa.
+ALBUMZ é um site para cadastrar e exibir álbuns musicais. Este projeto permite que os usuários adicionem informações sobre álbuns, sendo título, artista, gênero, ano, avalição, comentário e imagem da capa.
 
-*index.html*: Página inicial que exibe os álbuns cadastrados.
-*cadastro.html*: Página de cadastro de novos álbuns.
+--TECNOLOGIAS UTILIZADAS
 
-Como executar:
+PHP
+JavaScript
+CSS
+HTML
+Bootstrap
+SQL
+XAMPP
+Visual Studio Code
+
+--ESTRUTURA DO DIRETÓRIO
+
+
+
+--COMO EXECUTAR 
 *Clone o repositório*:
     bash
     git clone https://github.com/Gabriel-Vieira-Merlin/Site-de-Musica
