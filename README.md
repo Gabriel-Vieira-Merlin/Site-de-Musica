@@ -59,3 +59,6 @@ Visual Studio Code
 
 
 --COMO EXECUTAR 
+1- Baixe o diretório e extraia os arquivos
+2- Após isso insira a pasta rockvin2 na pasta htdocs do xampp
+3- Abra o XAMPP, inicie o Apache e o MySQL e acesse o PHPMyAdmin.
