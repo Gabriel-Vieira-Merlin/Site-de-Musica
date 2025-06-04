@@ -53,7 +53,7 @@ Visual Studio Code
 │   │
 │   └── /js/
 │       └── script.js
-├── index.php
+├── db-setup-sql.sql
 ├── index.php
 └── README.md
 
@@ -63,5 +63,5 @@ Visual Studio Code
 2- Após isso insira a pasta rockvin2 na pasta htdocs do xampp
 3- Abra o XAMPP, inicie o Apache e o MySQL e acesse o PHPMyAdmin.
 4- Crie um Banco de dados novo (recomendo chamar de sistema_cadastro)
-5- Clique em Importar e selecione o banco de dados
-- Abra o nevegador e digite "localhost/rockvin2
+5- Clique em Importar e selecione o banco de dados db-setup-sql.sql
+6- Abra o nevegador e digite "localhost/rockvin2"
