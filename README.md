@@ -60,8 +60,8 @@ Visual Studio Code
 
 --COMO EXECUTAR 
 1- Baixe o diretório e extraia os arquivos
-2- Após isso insira a pasta rockvin2 na pasta htdocs do xampp
+2- Após isso insira a pasta rock_vin2 na pasta htdocs do xampp
 3- Abra o XAMPP, inicie o Apache e o MySQL e acesse o PHPMyAdmin.
 4- Clique em Importar e selecione o banco de dados db-setup-sql.sql
-5- Acesse o config.inc e altere a senha para root
-5- Abra o nevegador e digite "localhost/rockvin2"
+5- Acesse o config.inc, vá até essa linha ($cfg['Servers'][$i]['password'] = '';) e altere a senha para root
+6- Abra o nevegador e digite "localhost/rock_vin2"
