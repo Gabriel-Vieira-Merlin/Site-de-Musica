@@ -28,7 +28,6 @@ class Album {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar dados
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
         $this->title = htmlspecialchars(strip_tags($this->title));
         $this->artist = htmlspecialchars(strip_tags($this->artist));
@@ -38,7 +37,6 @@ class Album {
         $this->review = htmlspecialchars(strip_tags($this->review));
         $this->cover_url = htmlspecialchars(strip_tags($this->cover_url));
 
-        // Bind dos parâmetros
         $stmt->bindParam(":user_id", $this->user_id);
         $stmt->bindParam(":title", $this->title);
         $stmt->bindParam(":artist", $this->artist);
@@ -48,22 +46,21 @@ class Album {
         $stmt->bindParam(":review", $this->review);
         $stmt->bindParam(":cover_url", $this->cover_url);
 
-        if($stmt->execute()) {
-            return true;
-        }
-        return false;
+        return $stmt->execute();
     }
 
-    // Ler todos os álbuns do usuário
+    // Ler todos os álbuns com filtros
     public function readAll($user_id, $filters = []) {
         $query = "SELECT * FROM " . $this->table_name . " WHERE user_id = :user_id";
-        
-        // Aplicar filtros
-        if (!empty($filters['genre'])) {
-            $query .= " AND genre = :genre";
+
+        if (!empty($filters['title'])) {
+            $query .= " AND title LIKE :title";
         }
         if (!empty($filters['artist'])) {
             $query .= " AND artist LIKE :artist";
+        }
+        if (!empty($filters['genre'])) {
+            $query .= " AND genre = :genre";
         }
         if (!empty($filters['release_year'])) {
             $query .= " AND release_year = :release_year";
@@ -71,19 +68,22 @@ class Album {
         if (!empty($filters['rating'])) {
             $query .= " AND rating = :rating";
         }
-        
+
         $query .= " ORDER BY created_at DESC";
-        
+
         $stmt = $this->conn->prepare($query);
-        
         $stmt->bindParam(":user_id", $user_id);
-        
-        if (!empty($filters['genre'])) {
-            $stmt->bindParam(":genre", $filters['genre']);
+
+        if (!empty($filters['title'])) {
+            $title = "%" . $filters['title'] . "%";
+            $stmt->bindParam(":title", $title);
         }
         if (!empty($filters['artist'])) {
             $artist = "%" . $filters['artist'] . "%";
             $stmt->bindParam(":artist", $artist);
+        }
+        if (!empty($filters['genre'])) {
+            $stmt->bindParam(":genre", $filters['genre']);
         }
         if (!empty($filters['release_year'])) {
             $stmt->bindParam(":release_year", $filters['release_year']);
@@ -91,7 +91,7 @@ class Album {
         if (!empty($filters['rating'])) {
             $stmt->bindParam(":rating", $filters['rating']);
         }
-        
+
         $stmt->execute();
         return $stmt;
     }
@@ -129,7 +129,6 @@ class Album {
 
         $stmt = $this->conn->prepare($query);
 
-        // Sanitizar dados
         $this->title = htmlspecialchars(strip_tags($this->title));
         $this->artist = htmlspecialchars(strip_tags($this->artist));
         $this->release_year = htmlspecialchars(strip_tags($this->release_year));
@@ -140,7 +139,6 @@ class Album {
         $this->id = htmlspecialchars(strip_tags($this->id));
         $this->user_id = htmlspecialchars(strip_tags($this->user_id));
 
-        // Bind dos parâmetros
         $stmt->bindParam(":title", $this->title);
         $stmt->bindParam(":artist", $this->artist);
         $stmt->bindParam(":release_year", $this->release_year);
@@ -151,10 +149,7 @@ class Album {
         $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":user_id", $this->user_id);
 
-        if($stmt->execute()) {
-            return true;
-        }
-        return false;
+        return $stmt->execute();
     }
 
     // Excluir álbum
@@ -168,10 +163,7 @@ class Album {
         $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":user_id", $this->user_id);
 
-        if($stmt->execute()) {
-            return true;
-        }
-        return false;
+        return $stmt->execute();
     }
 
     // Obter todos os gêneros distintos
@@ -192,12 +184,12 @@ class Album {
         return $stmt;
     }
 
+    // Obter todos os artistas distintos
     public function getArtists($user_id) {
-    $query = "SELECT DISTINCT artist FROM " . $this->table_name . " WHERE user_id = :user_id ORDER BY artist";
-    $stmt = $this->conn->prepare($query);
-    $stmt->bindParam(":user_id", $user_id);
-    $stmt->execute();
-    return $stmt;
+        $query = "SELECT DISTINCT artist FROM " . $this->table_name . " WHERE user_id = :user_id ORDER BY artist";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":user_id", $user_id);
+        $stmt->execute();
+        return $stmt;
     }
-
 }

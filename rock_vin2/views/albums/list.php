@@ -28,7 +28,7 @@
                         <option value="">Todos</option>
                         <?php while($artist = $artists->fetch(PDO::FETCH_ASSOC)): ?>
                             <option value="<?php echo htmlspecialchars($artist['artist']); ?>"
-                                <?php echo (isset($_GET['artist']) && $_GET['artist'] == $artist['artist']) ? 'selected' : ''; ?>>
+                                <?php echo (isset($_GET['artist']) && $_GET['artist'] === $artist['artist']) ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($artist['artist']); ?>
                             </option>
                         <?php endwhile; ?>
@@ -42,7 +42,7 @@
                         <option value="">Todos</option>
                         <?php while($genre = $genres->fetch(PDO::FETCH_ASSOC)): ?>
                             <option value="<?php echo htmlspecialchars($genre['genre']); ?>"
-                                <?php echo (isset($_GET['genre']) && $_GET['genre'] == $genre['genre']) ? 'selected' : ''; ?>>
+                                <?php echo (isset($_GET['genre']) && $_GET['genre'] === $genre['genre']) ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($genre['genre']); ?>
                             </option>
                         <?php endwhile; ?>
@@ -56,7 +56,7 @@
                         <option value="">Todos</option>
                         <?php while($year = $years->fetch(PDO::FETCH_ASSOC)): ?>
                             <option value="<?php echo htmlspecialchars($year['release_year']); ?>"
-                                <?php echo (isset($_GET['release_year']) && $_GET['release_year'] == $year['release_year']) ? 'selected' : ''; ?>>
+                                <?php echo (isset($_GET['release_year']) && $_GET['release_year'] === $year['release_year']) ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($year['release_year']); ?>
                             </option>
                         <?php endwhile; ?>
@@ -68,11 +68,11 @@
                     <label for="rating" class="form-label">Avaliação</label>
                     <select class="form-select bg-dark text-light border-orange" id="rating" name="rating">
                         <option value="">Todas</option>
-                        <option value="1" <?php echo (isset($_GET['rating']) && $_GET['rating'] == '1') ? 'selected' : ''; ?>>★☆☆☆☆ (1)</option>
-                        <option value="2" <?php echo (isset($_GET['rating']) && $_GET['rating'] == '2') ? 'selected' : ''; ?>>★★☆☆☆ (2)</option>
-                        <option value="3" <?php echo (isset($_GET['rating']) && $_GET['rating'] == '3') ? 'selected' : ''; ?>>★★★☆☆ (3)</option>
-                        <option value="4" <?php echo (isset($_GET['rating']) && $_GET['rating'] == '4') ? 'selected' : ''; ?>>★★★★☆ (4)</option>
-                        <option value="5" <?php echo (isset($_GET['rating']) && $_GET['rating'] == '5') ? 'selected' : ''; ?>>★★★★★ (5)</option>
+                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                            <option value="<?php echo $i; ?>" <?php echo (isset($_GET['rating']) && $_GET['rating'] == $i) ? 'selected' : ''; ?>>
+                                <?php echo str_repeat('★', $i) . str_repeat('☆', 5 - $i) . " ($i)"; ?>
+                            </option>
+                        <?php endfor; ?>
                     </select>
                 </div>
                 
@@ -105,7 +105,7 @@
                         <h6 class="card-subtitle mb-2 text-muted"><?php echo htmlspecialchars($row['artist']); ?></h6>
                         <div class="mb-2">
                             <?php 
-                                $rating = $row['rating'];
+                                $rating = (int)$row['rating'];
                                 echo str_repeat('★', $rating) . str_repeat('☆', 5 - $rating);
                             ?>
                         </div>
